@@ -26,66 +26,85 @@ function arr2ll(arr) {
 
 let temp = arr2ll(arr);
 
-function deleteHead(head) {
-  if (!head) return head;
-  let temp = head;
-  head = head.next;
-  temp.next = null;
-  return head;
-}
+var swapNodes = function(head, k) {
+    let curNode = head, endNode = head, count =1;
+     while(count < k){
+         curNode = curNode.next;
+         count++;
+     }
+     let frontNode = curNode;
+     curNode = curNode.next;
+     while(curNode){
+         curNode = curNode.next;
+         endNode = endNode.next;
+     }
+     [frontNode.val, endNode.val] = [endNode.val, frontNode.val];
+     return head;
+ 
+ };
 
-function deleteNode(head, k) {
-  if (!head) return head;
-  if (k == 1) {
-    let temp = head;
-    head = head.next;
-    temp.next = null;
-    return head;
-  }
+console.log(swapNodes(temp, 2));
 
-  let temp = head,
-    counter = 0,
-    prev = null;
-  while (temp) {
-    counter++;
-    if (counter == k) {
-      prev.next = prev.next.next;
-      temp.next = null;
-      break;
-    }
-    prev = temp;
-    temp = temp.next;
-  }
+// function deleteHead(head) {
+//   if (!head) return head;
+//   let temp = head;
+//   head = head.next;
+//   temp.next = null;
+//   return head;
+// }
 
-  return head;
-}
+// function deleteNode(head, k) {
+//   if (!head) return head;
+//   if (k == 1) {
+//     let temp = head;
+//     head = head.next;
+//     temp.next = null;
+//     return head;
+//   }
 
-var insertPostition=(head, el,  k)=>{
-    if(head==null){
-        if(k==1) return new Node(el)
-        else return head
-    }
-    if(k==1) {
-        return new Node(el, head)
-    }
-    let temp = head, c=0
-    while(temp){
-        c++
-        if(c==(k-1)){
-            let x = new Node(el, temp.next)
-            temp.next = x
-            break
-        }
-        temp = temp.next
-    }
-    return head
-}
+//   let temp = head,
+//     counter = 0,
+//     prev = null;
+//   while (temp) {
+//     counter++;
+//     if (counter == k) {
+//       prev.next = prev.next.next;
+//       temp.next = null;
+//       break;
+//     }
+//     prev = temp;
+//     temp = temp.next;
+//   }
 
-temp = insertPostition(temp,100,2)
+//   return head;
+// }
 
-// temp = deleteNode(temp, 1);
+// var insertPostition=(head, el,  k)=>{
+//     if(head==null){
+//         if(k==1) return new Node(el)
+//         else return head
+//     }
+//     if(k==1) {
+//         return new Node(el, head)
+//     }
+//     let temp = head, c=0
+//     while(temp){
+//         c++
+//         if(c==(k-1)){
+//             let x = new Node(el, temp.next)
+//             temp.next = x
+//             break
+//         }
+//         temp = temp.next
+//     }
+//     return head
+// }
 
-while(temp){
-    console.log(temp.val)
-    temp = temp.next
+// temp = insertPostition(temp,100,2)
+
+// // temp = deleteNode(temp, 1);
+
+while (temp) {
+  console.log(temp.val);
+  temp = temp.next;
 }
